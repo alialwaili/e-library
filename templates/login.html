@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Access Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="terminal-line"></div>
+    
+    <div class="container">
+        <div class="admin-panel">
+            <h2>ADMIN ACCESS PORTAL</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form class="admin-form" method="POST" action="{{ url_for('shadow_login') }}">
+                <div class="form-group">
+                    <label for="admin-username">ACCESS KEY</label>
+                    <input type="text" id="admin-username" name="username" placeholder="Enter access key" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">ENCRYPTION KEY</label>
+                    <input type="password" id="admin-password" name="password" placeholder="Enter encryption key" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-token">SECURITY TOKEN</label>
+                    <input type="text" id="admin-token" name="token" placeholder="Enter security token" required>
+                </div>
+                <div class="admin-actions">
+                    <a href="{{ url_for('index') }}" class="admin-btn-cancel">CANCEL</a>
+                    <button type="submit" class="admin-btn-submit">AUTHENTICATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload - Shadow Archive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="terminal-line"></div>
+    
+    <div class="container">
+        <header>
+            <div class="terminal-header">
+                <h1 class="glitch-text">SHADOW ARCHIVE</h1>
+                <p class="tagline">:: Restricted Knowledge Repository :: Access Level: Gamma ::</p>
+                
+                <div class="status-bar">
+                    <div class="status-item">
+                        <div class="status-indicator"></div>
+                        <span>Connection: Secure (TOR v3)</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-indicator"></div>
+                        <span>Identity: Anonymous</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-indicator"></div>
+                        <span>Upload Mode: Active</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('books') }}">Books</a></li>
+                <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                <li><a href="#">Restricted Section</a></li>
+                <li><a href="#">Cryptography</a></li>
+            </ul>
+        </nav>
+        
+        <h2 class="section-title">Upload Restricted Document</h2>
+        
+        <div class="upload-form">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Book Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="Cryptography">Cryptography</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Forbidden History">Forbidden History</option>
+                        <option value="Experimental Science">Experimental Science</option>
+                        <option value="Politics">Politics</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="access_level">Access Level</label>
+                    <select id="access_level" name="access_level" required>
+                        <option value="1">Level 1 - Public</option>
+                        <option value="2">Level 2 - Restricted</option>
+                        <option value="3">Level 3 - Confidential</option>
+                        <option value="4">Level 4 - Secret</option>
+                        <option value="5">Level 5 - Top Secret</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="file">Upload File (PDF only)</label>
+                    <input type="file" id="file" name="file" accept=".pdf" required>
+                </div>
+                
+                <button type="submit" class="submit-btn">UPLOAD TO ARCHIVE</button>
+            </form>
+        </div>
+        
+        <footer>
+            <p>:: WARNING :: This node will self-destruct upon unauthorized access attempts ::</p>
+            <p>Connection encrypted with 4096-bit RSA | TOR routing active | No logs maintained</p>
+            <p style="margin-top: 10px; color: #0f6;">© 2023 Shadow Archive - Access is Privilege, Not Right</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

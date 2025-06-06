@@ -1,0 +1,219 @@
+/* Admin Login Panel */
+.admin-panel {
+    max-width: 500px;
+    margin: 50px auto;
+    background: rgba(10, 5, 20, 0.95);
+    border: 2px solid #a00;
+    box-shadow: 0 0 30px rgba(200, 0, 0, 0.7);
+    padding: 30px;
+    z-index: 2000;
+}
+
+.admin-panel h2 {
+    text-align: center;
+    color: #f50;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(255, 80, 0, 0.7);
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #f0f;
+}
+
+.form-group input {
+    padding: 12px;
+    background: rgba(20, 0, 30, 0.8);
+    border: 1px solid #a00;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #f50;
+    box-shadow: 0 0 10px rgba(255, 80, 0, 0.5);
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.admin-btn-submit {
+    background: rgba(100, 0, 0, 0.8);
+    border: 1px solid #f00;
+    color: #fff;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.admin-btn-submit:hover {
+    background: rgba(150, 0, 0, 0.9);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+.admin-btn-cancel {
+    background: rgba(30, 30, 60, 0.8);
+    border: 1px solid #00a;
+    color: #aaf;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.admin-btn-cancel:hover {
+    background: rgba(40, 40, 80, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+}
+
+/* Admin Dashboard */
+.admin-dashboard {
+    margin: 30px auto;
+    background: rgba(10, 5, 20, 0.95);
+    border: 2px solid #a00;
+    box-shadow: 0 0 30px rgba(200, 0, 0, 0.7);
+    padding: 30px;
+    z-index: 2000;
+    overflow-y: auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #a00;
+    padding-bottom: 15px;
+}
+
+.dashboard-header h2 {
+    color: #f50;
+    text-shadow: 0 0 10px rgba(255, 80, 0, 0.7);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: rgba(20, 0, 30, 0.8);
+    border: 1px solid #a00;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.dashboard-card h3 {
+    color: #f0f;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 10px;
+    background: rgba(30, 0, 40, 0.8);
+    border: 1px solid #800080;
+}
+
+.stat-value {
+    font-size: 2rem;
+    color: #f0f;
+    margin: 10px 0;
+}
+
+.stat-label {
+    color: #aaf;
+}
+
+.book-management {
+    grid-column: span 2;
+}
+
+.book-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.book-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #500050;
+    align-items: center;
+}
+
+.book-item:last-child {
+    border-bottom: none;
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-title {
+    font-weight: bold;
+    color: #f0f;
+}
+
+.book-meta {
+    font-size: 0.9rem;
+    color: #aaf;
+}
+
+.book-actions button {
+    background: rgba(100, 0, 0, 0.8);
+    border: 1px solid #f00;
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+}
+
+.book-actions button:hover {
+    background: rgba(150, 0, 0, 0.9);
+}
+
+.flash-danger {
+    background: rgba(150, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f00;
+}
+
+.flash-success {
+    background: rgba(0, 100, 0, 0.8);
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #0f0;
+}

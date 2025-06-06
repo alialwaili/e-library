@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="search-area">
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search encrypted database...">
+        <button id="search-btn">DECRYPT</button>
+    </div>
+    <p style="margin-top: 15px; color: #0f6;">Search query will be anonymized and encrypted</p>
+</div>
+
+<h2 class="section-title">Recently Added Volumes</h2>
+
+<div class="books-grid">
+    {% for book in recent_books %}
+    <div class="book-card">
+        <div class="book-cover">
+            <span>{{ book['category'].upper() }}</span>
+        </div>
+        <h3 class="book-title">{{ book['title'] }}</h3>
+        <p class="book-author">{{ book['author'] }}</p>
+        <p class="book-desc">{{ book['description'] }}</p>
+        <div class="book-meta">
+            <span>Category: {{ book['category'] }}</span>
+            <span>Access: Level {{ book['access_level'] }}</span>
+        </div>
+        <a href="{{ url_for('download', filename=book['file_path']) }}" class="download-btn">DOWNLOAD (PGP ENCRYPTED)</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
