@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Shadow Archive{% endblock %}</title>
+    <title>{% block title %}Ali ALwaili's Archive{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
@@ -13,8 +13,8 @@
     <div class="container">
         <header>
             <div class="terminal-header">
-                <h1 class="glitch-text">SHADOW ARCHIVE</h1>
-                <p class="tagline">:: Restricted Knowledge Repository :: Access Level: Gamma ::</p>
+                <h1 class="glitch-text">Ali Alwaili's ARCHIVE</h1>
+                <p class="tagline">Restricted Knowledge</p>
                 
                 <div class="status-bar">
                     <div class="status-item">
@@ -33,30 +33,13 @@
             </div>
         </header>
         
-        <nav>
-            <ul class="nav-links">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('books') }}">Books</a></li>
-                <li><a href="#">Restricted Section</a></li>
-                <li><a href="#">Cryptography</a></li>
-                <li><a href="#">Cybersecurity</a></li>
-            </ul>
-        </nav>
-        
         {% block content %}{% endblock %}
         
         <footer>
             <p>:: WARNING :: This node will self-destruct upon unauthorized access attempts ::</p>
             <p>Connection encrypted with 4096-bit RSA | TOR routing active | No logs maintained</p>
-            <p style="margin-top: 10px; color: #0f6;">© 2023 Shadow Archive - Access is Privilege, Not Right</p>
+            <p style="margin-top: 10px; color: #0f6;">© 2025 Ali Alwaili's Archive - Access is Privilege, Not Right</p>
         </footer>
-    </div>
-
-    <!-- Hidden Admin Portal Button -->
-    <div class="admin-portal">
-        <a href="{{ url_for('shadow_login') }}" class="admin-btn">
-            <i class="fas fa-user-secret"></i>
-        </a>
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

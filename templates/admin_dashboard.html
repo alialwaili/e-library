@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Archive - Admin Dashboard</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,7 +14,7 @@
     <div class="container">
         <div class="admin-dashboard">
             <div class="dashboard-header">
-                <h2>SHADOW ARCHIVE :: ADMIN DASHBOARD</h2>
+                <h2>ADMIN DASHBOARD</h2>
                 <a href="{{ url_for('admin_logout') }}" class="admin-btn-cancel">LOGOUT</a>
             </div>
             
@@ -57,27 +57,6 @@
                             <textarea id="description" name="description" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="category">Category</label>
-                            <select id="category" name="category" required>
-                                <option value="Cryptography">Cryptography</option>
-                                <option value="Cybersecurity">Cybersecurity</option>
-                                <option value="Forbidden History">Forbidden History</option>
-                                <option value="Experimental Science">Experimental Science</option>
-                                <option value="Politics">Politics</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="access_level">Access Level</label>
-                            <select id="access_level" name="access_level" required>
-                                <option value="1">Level 1 - Public</option>
-                                <option value="2">Level 2 - Restricted</option>
-                                <option value="3">Level 3 - Confidential</option>
-                                <option value="4">Level 4 - Secret</option>
-                                <option value="5">Level 5 - Top Secret</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="file">Upload File (PDF only)</label>
                             <input type="file" id="file" name="file" accept=".pdf" required>
                         </div>
@@ -92,7 +71,7 @@
                         <div class="book-item">
                             <div class="book-info">
                                 <div class="book-title">{{ book['title'] }}</div>
-                                <div class="book-meta">Category: {{ book['category'] }} | Access: Level {{ book['access_level'] }}</div>
+                                <div class="book-meta">Downloads: {{ book['download_count'] }}</div>
                             </div>
                             <div class="book-actions">
                                 <form method="POST" action="{{ url_for('admin_delete', book_id=book['id']) }}">

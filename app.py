@@ -8,8 +8,8 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['DATABASE'] = 'library.db'
-app.config['ADMIN_USER'] = 'shadowadmin'
-app.config['ADMIN_PASS'] = generate_password_hash('darkweb123!')  # Change this in production
+app.config['ADMIN_USER'] = 'AliAlwaili'
+app.config['ADMIN_PASS'] = generate_password_hash('Iamthegodofdarkweb')  # Change this in production
 
 # Create directories if they don't exist
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
@@ -18,15 +18,15 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 def init_db():
     conn = sqlite3.connect(app.config['DATABASE'])
     c = conn.cursor()
+    # Added download_count column to the table
     c.execute('''CREATE TABLE IF NOT EXISTS books
                  (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  title TEXT NOT NULL,
                  author TEXT NOT NULL,
                  description TEXT,
-                 category TEXT NOT NULL,
-                 access_level INTEGER NOT NULL,
                  file_path TEXT NOT NULL,
-                 upload_date TEXT NOT NULL)''')
+                 upload_date TEXT NOT NULL,
+                 download_count INTEGER NOT NULL DEFAULT 0)''')
     
     # Create admin table if it doesn't exist
     c.execute('''CREATE TABLE IF NOT EXISTS admin
@@ -72,10 +72,17 @@ def books():
 
 @app.route('/download/<filename>')
 def download(filename):
+    # Increment download count
+    conn = get_db()
+    c = conn.cursor()
+    c.execute("UPDATE books SET download_count = download_count + 1 WHERE file_path = ?", (filename,))
+    conn.commit()
+    conn.close()
+    
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
-@app.route('/shadow-login', methods=['GET', 'POST'])
-def shadow_login():
+@app.route('/s_2a7_d_4m_9i_1n_3_b_', methods=['GET', 'POST'])
+def s_2a7_d_4m_9i_1n_3_b_():
     if session.get('admin_logged_in'):
         return redirect(url_for('admin_dashboard'))
     
@@ -87,7 +94,7 @@ def shadow_login():
         # Validate credentials
         if (username == app.config['ADMIN_USER'] and 
             check_password_hash(app.config['ADMIN_PASS'], password) and 
-            token == '7X9P2R'):  # Change token in production
+            token == '2025'):  # Change token in production
             
             session['admin_logged_in'] = True
             return redirect(url_for('admin_dashboard'))
@@ -99,7 +106,7 @@ def shadow_login():
 @app.route('/admin-dashboard')
 def admin_dashboard():
     if not session.get('admin_logged_in'):
-        return redirect(url_for('shadow_login'))
+        return redirect(url_for('s_2a7_d_4m_9i_1n_3_b_'))
     
     conn = get_db()
     c = conn.cursor()
@@ -119,13 +126,11 @@ def admin_logout():
 @app.route('/admin-upload', methods=['POST'])
 def admin_upload():
     if not session.get('admin_logged_in'):
-        return redirect(url_for('shadow_login'))
+        return redirect(url_for('s_2a7_d_4m_9i_1n_3_b_'))
     
     title = request.form['title']
     author = request.form['author']
     description = request.form['description']
-    category = request.form['category']
-    access_level = request.form['access_level']
     file = request.files['file']
     
     if file:
@@ -136,8 +141,8 @@ def admin_upload():
         conn = get_db()
         c = conn.cursor()
         upload_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        c.execute("INSERT INTO books (title, author, description, category, access_level, file_path, upload_date) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                  (title, author, description, category, access_level, filename, upload_date))
+        c.execute("INSERT INTO books (title, author, description, file_path, upload_date) VALUES (?, ?, ?, ?, ?)",
+                  (title, author, description, filename, upload_date))
         conn.commit()
         conn.close()
         
@@ -148,7 +153,7 @@ def admin_upload():
 @app.route('/admin-delete/<int:book_id>', methods=['POST'])
 def admin_delete(book_id):
     if not session.get('admin_logged_in'):
-        return redirect(url_for('shadow_login'))
+        return redirect(url_for('s_2a7_d_4m_9i_1n_3_b_'))
     
     conn = get_db()
     c = conn.cursor()
